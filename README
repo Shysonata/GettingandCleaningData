@@ -1,0 +1,16 @@
+Assignment: GettingandCleaningData
+
+This repository is a submission by Michael Cowled for the GettingandCleaningData final assignment.
+
+Dataset
+Human Activity Recognition Using Smartphones
+
+Files
+Code_Book.Rmd a code book that describes the datasets, and the resulting tidied datasets following the use of the script "run_analysis.R".
+It also explains the names assigned to renamed variables.
+
+Outcomes of the "run_analysis.R" script:
+-Loads and merges the training and test datasets into a single unified file (samsung_data).
+-Tidies the dataset, by adding descriptive names to activities, and appropriately labelling variable names: (tidy_data).
+-Computes the means and standard deviations for each measurement in the dataset (final_data).
+-Explorts the data to a text file named "final_data.txt".

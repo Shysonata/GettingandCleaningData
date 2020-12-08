@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Code_Book"
 author: "Michael Cowled"
@@ -45,4 +46,53 @@ Codes to help in deciphering tidied dataset present in final_data:
 - All BodyBody in column’s name replaced by Body
 - All Mag in column’s name replaced by Magnitude
 - All start with character f in column’s name replaced by Frequency
+=======
+---
+title: "Code_Book"
+author: "Michael Cowled"
+date: "7 December 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+The script titled "run_analysis.R" loads, collates, tidies and takes the means of a set of samsung datasets.
+
+Ensure the dataset is downloaded, unzipped and present under the name "UCI HAR Dataset" in the working directory
+
+~
+
+Following the use of the script, the objects in the global environment are as follows:
+
+- "activities" <- activity_labels.txt: 6 obs. of 2 variables #pertains to the list of activities performed (e.g. 1 = WALKING).
+- "features" <- features.txt: 561 obs. of 2 variables #various accelerometer and gyroscope functions (e.g. tBodyAcc-mean()-X).
+- "final_data" <- FROM tidy_data: 180 obs. of 88 variables #A final tabulated version of the tidy data that incorporates the means.
+- "samsung_data" <- FROM subject_complete & x_complete & y_complete: 10299 obs. of 563 variables #A unified table of all Samsung data.
+- "subject_complete" <- FROM subject_train & subject_test: 10299 obs. of 1 variable #A unified table of all subject data.
+- "subject_test" <- subject_test.txt: 2947 obs. of 1 variable #Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.
+- "subject_train" <- subject_train.txt: 7352 obs. of 1 variable #Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
+- "tidy_data" <- FROM samsung_data: 10299 obs. of 88 variables #Contains a tidied version of the samsung_data dataset.
+- "x_complete" <- FROM x_train & x_test: 2947 obs. of 561 variables #A unified table of all 'x' data.
+- "x_test" <- x_test.txt: 2947 obs. of 561 variables #Test 'x' measurements for the subject subjects vs. features.
+- "x_train" <- x_train.txt: 7352 obs. of 561 variables #Training 'x' measurements for the subject subjects vs. features.
+- "y_complete" <- FROM y_train & y_test: 10299 obs. of 1 variables #A unified table of all 'y' data.
+- "y_test" <- y_test.txt: 2947 obs. of 1 variable #Test 'y' measurements for the subject subjects vs. activities.
+- "y_train" <- y_train.txt: 7352 obs. of 1 variables #Training 'y' measurements for the subject subjects vs. activities.
+
+~
+
+Codes to help in deciphering tidied dataset present in final_data:
+
+- Activity labels used in place of numeric factors.
+- "code" column renamed to "activities"
+- All Acc in column’s name replaced by Accelerometer
+- All Gyro in column’s name replaced by Gyroscope
+- All BodyBody in column’s name replaced by Body
+- All Mag in column’s name replaced by Magnitude
+- All start with character f in column’s name replaced by Frequency
+>>>>>>> 1353442e4a4c3d56ad321b78f680e9aa3a099595
 - All start with character t in column’s name replaced by Time
