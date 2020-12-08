@@ -21,3 +21,28 @@ samsung_data <- cbind(subject_complete, x_complete, y_complete)
 
 #Tidies up dataset
 tidy_data <- select(samsung_data, subject, code, contains("mean"), contains("std"))
+
+#Gives the factors the descriptive codes based on activity type (e.g. 1 = WALKING)
+tidy_data$code <- activities[tidy_data$code, 2]
+
+#Tidying/renaming various variables to be more descriptive
+names(tidy_data)[2] = "activity"
+names(tidy_data)<-gsub("Acc", "Accelerometer", names(tidy_data))
+names(tidy_data)<-gsub("Gyro", "Gyroscope", names(tidy_data))
+names(tidy_data)<-gsub("BodyBody", "Body", names(tidy_data))
+names(tidy_data)<-gsub("Mag", "Magnitude", names(tidy_data))
+names(tidy_data)<-gsub("^t", "Time", names(tidy_data))
+names(tidy_data)<-gsub("^f", "Frequency", names(tidy_data))
+names(tidy_data)<-gsub("tBody", "TimeBody", names(tidy_data))
+names(tidy_data)<-gsub("-mean()", "Mean", names(tidy_data), ignore.case = TRUE)
+names(tidy_data)<-gsub("-std()", "STD", names(tidy_data), ignore.case = TRUE)
+names(tidy_data)<-gsub("-freq()", "Frequency", names(tidy_data), ignore.case = TRUE)
+names(tidy_data)<-gsub("angle", "Angle", names(tidy_data))
+names(tidy_data)<-gsub("gravity", "Gravity", names(tidy_data))
+
+#Takes the tidied dataset and computes the means
+final_data <- group_by(tidy_data, subject, activity)
+final_data <- summarise_all(final_data, funs(mean))
+
+#writes the table to a txt file
+write.table(final_data, "final_data.txt", row.name=FALSE)
